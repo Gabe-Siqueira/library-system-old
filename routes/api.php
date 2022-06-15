@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ApiWeatherController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,12 +39,9 @@ Route::group(['middleware' => ['jwt.auth']], function(){
     Route::put('user/{id}', [UserController::class, 'update']);
     Route::delete('user/{id}', [UserController::class, 'destroy']);
 
-
-    // MenusController
-    // Route::get('menus', [MenusController::class, 'index']);
-    // Route::post('menus', [MenusController::class, 'store']);
-    // Route::get('menus/{id}', [MenusController::class, 'show']);
-    // Route::put('menus/{id}', [MenusController::class, 'update']);
-    // Route::delete('menus/{id}', [MenusController::class, 'destroy']);
+    // ApiWeatherController
+    Route::get('apiweather/authenticateKey', [ApiWeatherController::class, 'authenticateKey']);
+    Route::get('apiweather/getCityByIpLocation', [ApiWeatherController::class, 'getCityByIpLocation']);
+    Route::get('apiweather/getCityByName', [ApiWeatherController::class, 'getCityByName']);
 
 });
