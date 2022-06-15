@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\JwtPermission;
 
 class AuthController extends Controller
 {
@@ -12,6 +13,11 @@ class AuthController extends Controller
         if (!$token = auth('api')->attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
+
+        $jwtPermission = new JwtPermission;
+        $jwtPermission->token = $token;
+        $jwtPermission->local = 'user';
+        $jwtPermission->save();
 
         return $this->respondWithToken($token);
     }

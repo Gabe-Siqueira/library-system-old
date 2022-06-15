@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class LogErros extends Model
 {
     use HasFactory;
 
-    protected $table = 'book';
-
     protected $fillable = [
-        'title',
-        'description',
-        'author',
-        'number_pages',
-        'registration_date'
+        'id_user',
+        'Message',
+        'Code',
+        'File',
+        'Line',
+        'TraceAsString'
     ];
-
 }

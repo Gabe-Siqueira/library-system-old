@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Book extends Model
+class JwtPermission extends Model
 {
     use HasFactory;
 
-    protected $table = 'book';
+    protected $table = "jwt_permissions";
 
     protected $fillable = [
-        'title',
-        'description',
-        'author',
-        'number_pages',
-        'registration_date'
+        'token',
+        'local'
     ];
-
 }
